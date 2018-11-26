@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Keyboard {
 	 static Scanner keyboard = new Scanner(System.in);
 	
-	 //CERRAR TECLADO
+	 //FUNCIÓN PARA CERRAR TECLADO
 	 public static void closeKeyboard() {
 		 keyboard.close();
 	 }
 	 
-	 //LIMPIAR BUFFER
+	 //FUNCIÓN PARA LIMPIAR BUFFER
 	 public static void cleanBuffer() {
 		 keyboard.nextLine();
 	 }
@@ -45,10 +45,10 @@ public class Keyboard {
 		 		//el carácter.
 		 		if(!readBoolean("¿Estas de acuerdo?(Pulsa n para volver a elegir)")) {
 		 			sentinel = true;
+		 			System.out.printf("Escribe otro carácter:%n");
 		 		}
 		 	}
 		 }
-		 cleanBuffer();
 		 return c;
 	 }
 	 
@@ -63,7 +63,6 @@ public class Keyboard {
 		 String s;
 		 //2. El usuario introduce una cadena
 		 s = keyboard.nextLine();
-		 cleanBuffer();
 		 return s;
 	 }
 	 
@@ -76,30 +75,23 @@ public class Keyboard {
 	  *//////////////////////////////////////////////////////////////////////////////////////*/
 	
 	 public static boolean readBoolean(String message, String option1, String option2) {
-		 boolean sentinel = true, value;
-		 int choice=0;
+		 boolean sentinel = true, value=false;
+		 byte choice=0;
 		 
 		 while(sentinel) {
 			 //1. Se le muestra al usuario un mensaje para elegir entre 2 opciones.
 			 System.out.printf("%s%n	1.%s%n	2.%s%n", message, option1, option2);
-			 try {
-				 choice = readInt();
-				 //2. Si el usuario intenta elegir una opción distinta se le pedira que vuelva a elegir.
-				 if(choice <1 || choice >2) {
-					 System.out.println("Opción no válida. Introduce 1 o 2.");
-					 keyboard.nextLine(); //Limpia el buffer
-					 sentinel = true;
-				 }
-				 else {
-					 sentinel = false;
-				 }
+			 choice = readByte();
+			 //2. Si el usuario intenta elegir una opción distinta se le pedira que vuelva a elegir.
+			 if(choice <1 || choice >2) {
+				System.out.println("Opción no válida. Introduce 1 o 2.");
+				keyboard.nextLine(); //Limpia el buffer
+				sentinel = true;
 			 }
-			 catch(InputMismatchException e) {
-				 System.out.println("Tipo de dato no válido. Elige 1 o 2.");
-				 keyboard.nextLine(); //Limpia el buffer
-				 sentinel = true;
-			 } 
-		 }
+			 else {
+				sentinel = false;
+				 
+			 }
 		 //3. Cuando el usuario elija la primera o la segunda opción se guarda su elección.
 		 if(choice == 1) {
 			 value = true;
@@ -107,9 +99,10 @@ public class Keyboard {
 		 else {
 			 value = false;
 		 }
-		 cleanBuffer();
+		 }
 		 return value;
 	 }
+		 
 	 
 	 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	  * FUNCIÓN PARA LEER DATOS BOOLEANOS CON PREGUNTA
@@ -142,7 +135,6 @@ public class Keyboard {
 				 System.out.println("Opción no válida. Introduce s/n para continuar: ");
 			 }
 		 }
-		 cleanBuffer();
 		 return value;
 	 }
 	 
@@ -170,12 +162,12 @@ public class Keyboard {
 			 }
 			 //3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(byte): ");
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
@@ -193,12 +185,12 @@ public class Keyboard {
 				 }
 			 //3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(short): ");
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
@@ -216,12 +208,12 @@ public class Keyboard {
 			 }
 			//3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(int): ");
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
@@ -239,19 +231,19 @@ public class Keyboard {
 			 }
 			//3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(long): ");
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
 	 //FUNCIÓN PARA LEER DATOS NUMÉRICOS TIPO FLOAT
 	 // 1. Se le pide un número al usuario.
 	 public static float readFloat() {
-		 float x=0.0f;
+		 float x=0f;
 		 boolean sentinel = true;
 		 
 		 while(sentinel) {
@@ -262,12 +254,12 @@ public class Keyboard {
 			 }
 			//3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(float): ");
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
@@ -285,13 +277,13 @@ public class Keyboard {
 			 }
 			//3. Si escribe algo distinto a un número se le volveŕa a pedir que escriba un número.
 			 catch(InputMismatchException e){
-				 System.out.println("Has introducido un valor no válido. Introduce un número: ");
+				 System.out.println("Has introducido un valor no válido. Introduce un número(double): ");
 				 keyboard.nextLine(); //Limpia el buffer
 				 sentinel = true;
+				 cleanBuffer();
 			 }		 
 		 }
 		 //4. Si escribe un número se guarda y se continua.
-		 cleanBuffer();
 		 return x;
 	 }
 	 
@@ -332,48 +324,44 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readByte();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readByte();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d%n", x);
 						sentinel = true;
 			 		}
 			 		break;
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readByte();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d%n", x);
 			 			sentinel = true;
 			 		}
 					break;
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readByte();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
@@ -393,7 +381,6 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readShort();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
@@ -405,7 +392,6 @@ public class Keyboard {
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readShort();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
@@ -417,7 +403,6 @@ public class Keyboard {
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readShort();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
@@ -429,7 +414,6 @@ public class Keyboard {
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readShort();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
@@ -440,7 +424,6 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -454,7 +437,6 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readInt();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
@@ -466,7 +448,6 @@ public class Keyboard {
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readInt();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
@@ -478,7 +459,6 @@ public class Keyboard {
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readInt();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
@@ -490,7 +470,6 @@ public class Keyboard {
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readInt();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
@@ -501,7 +480,6 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -515,7 +493,6 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readLong();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
@@ -527,7 +504,6 @@ public class Keyboard {
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readLong();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
@@ -539,7 +515,6 @@ public class Keyboard {
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readLong();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
@@ -551,7 +526,6 @@ public class Keyboard {
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readLong();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
@@ -562,7 +536,6 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -576,7 +549,6 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readFloat();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
@@ -588,7 +560,6 @@ public class Keyboard {
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readFloat();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
@@ -600,7 +571,6 @@ public class Keyboard {
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readFloat();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
@@ -612,7 +582,6 @@ public class Keyboard {
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readFloat();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
@@ -623,7 +592,6 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -637,7 +605,6 @@ public class Keyboard {
 			 	//2. Si es mayor o igual:
 			 	case MAYOR_IGUAL:
 			 		//2.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número mayor o igual qué %d%n", x);
 			 		y = readDouble();
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
@@ -649,7 +616,6 @@ public class Keyboard {
 				//3. Si es menor o igual:
 			 	case MENOR_IGUAL:
 			 		//3.1. El usuario escribe un número.
-			 		System.out.printf("Introduce un número menor o igual qué %d%n", x);
 			 		y = readDouble();
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
@@ -661,7 +627,6 @@ public class Keyboard {
 			 	//4. Si es mayor:
 				case MAYOR:
 					//4.1. El usuario escribe un número.
-					System.out.printf("Introduce un número mayor qué %d%n", x);
 					y = readDouble();
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
@@ -673,7 +638,6 @@ public class Keyboard {
 			 	//5. Si es menor:
 			 	case MENOR:
 				 	//5.1. El usuario escribe un número.
-					System.out.printf("Introduce un número menor qué %d%n", x);
 			 		y = readDouble();
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
@@ -684,7 +648,6 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
 		 return y;
 	 }
 	  
@@ -723,7 +686,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readByte();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -736,7 +698,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readByte();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -749,7 +710,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readByte();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -762,7 +722,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readByte();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -774,7 +733,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -792,7 +750,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readShort();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -805,7 +762,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readShort();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -818,7 +774,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readShort();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -831,7 +786,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readShort();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -843,7 +797,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -862,7 +815,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readInt();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -875,7 +827,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readInt();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -888,7 +839,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readInt();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -901,7 +851,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readInt();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -913,7 +862,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }	
 	 
@@ -931,7 +879,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readLong();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -944,7 +891,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readLong();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -957,7 +903,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readLong();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -970,7 +915,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readLong();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -982,7 +926,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -1000,7 +943,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readFloat();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -1013,7 +955,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readFloat();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -1026,7 +967,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readFloat();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -1039,7 +979,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readFloat();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -1051,7 +990,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }
 	 
@@ -1069,7 +1007,6 @@ public class Keyboard {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
 			 	case MAX_MIN_INCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, ambos incluidos", min, max);
 			 		y = readDouble();
 					//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -1082,7 +1019,6 @@ public class Keyboard {
 			 	//2.2. Valor mínimo y valor máximo excluidos del rango
 			 	case MAX_MIN_EXCLUDED:
 				 	//3. El usuario escribe un número.
-					System.out.printf("Escribe un número entre %d y %d, sin incluirlos", min, max);
 			 		y = readDouble();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 				 	sentinel = false;
@@ -1095,7 +1031,6 @@ public class Keyboard {
 				 //2.3. Valor mínimo incluido en el rango, valor máximo no.
 				case MIN_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, mínimo incluido y máximo excluido", min, max);
 			 		y = readDouble();
 			 		//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 			 		sentinel = false;
@@ -1108,7 +1043,6 @@ public class Keyboard {
 				//2.4. Valor máximo incluido en el rango, valor mínimo no.
 			 	case MAX_INCLUDED:
 			 		//3. El usuario escribe un número.
-			 		System.out.printf("Escribe un número entre %d y %d, máximo incluido y mínimo excluido", min, max);
 			 		y = readDouble();
 				 	//4. Si el número del usuario está dentro de los límites indicados guarda la respuesta y continua.
 					sentinel = false;
@@ -1120,12 +1054,6 @@ public class Keyboard {
 			 		break;
 			 }
 	 }
-		 cleanBuffer();
 		 return y;
 	 }
-	 
-	 
-	 
-	 
-	 
 }
