@@ -4,9 +4,10 @@ import static keyboard.Keyboard.*;
 public class Keyboard_test {
 	public static void main(String[] args) {
 		//Variables menús
-		boolean mainMenu = true, testMenu, rangeTestMenu, mayorMenorMenu, answerBoolean;
+		boolean mainMenu = true, testMenu, rangeTestMenu, mayorMenorMenu;
 		int mainMenuOption, typeValue, limitValue, mayorMenorValue;
 		//Variables para las pruebas
+		boolean answerBoolean;
 		byte compareByte, minByte, maxByte, numByte;
 		short compareShort, minShort, maxShort, numShort;
 		int compareInt, minInt, maxInt, numInt;
@@ -66,6 +67,7 @@ public class Keyboard_test {
 			case 3:
 				typeValue = printTypeMenu();
 				switch(typeValue) {
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO BYTE
 				case 1:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo byte (-128 a 127): ");
@@ -74,6 +76,7 @@ public class Keyboard_test {
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números byte?");
 					}
 					break;
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO SHORT
 				case 2:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo short (-32768 a 32767): ");
@@ -82,6 +85,7 @@ public class Keyboard_test {
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números short?");
 					}
 					break;
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO INT
 				case 3:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo int: ");
@@ -90,6 +94,7 @@ public class Keyboard_test {
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números int?");
 					}
 					break;
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO LONG
 				case 4:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo long: ");
@@ -98,6 +103,7 @@ public class Keyboard_test {
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números long?");
 					}
 					break;
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO FLOAT
 				case 5:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo float: ");
@@ -106,6 +112,7 @@ public class Keyboard_test {
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números float?");
 					}
 					break;
+				//PRUEBA FUNCIÓN PARA LEER NÚMERO DOUBLE
 				case 6:
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo short Double: ");
@@ -132,7 +139,7 @@ public class Keyboard_test {
 				typeValue = printTypeMenu();
 				switch(typeValue) {
 				
-				//1.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL BYTE
+				//1.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL BYTE||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 1:
 					while(testMenu) {
 						mayorMenorMenu = true;
@@ -182,7 +189,7 @@ public class Keyboard_test {
 					}
 					break;
 					
-				//2.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL SHORT
+				//2.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL SHORT||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 2:
 					while(testMenu) {
 						mayorMenorMenu = true;
@@ -232,7 +239,7 @@ public class Keyboard_test {
 					}
 					break;
 					
-				//3.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL INT
+				//3.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL INT||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 3:
 					while(testMenu) {
 						mayorMenorMenu = true;
@@ -282,7 +289,7 @@ public class Keyboard_test {
 					}
 					break;
 					
-				//4.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL LONG
+				//4.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL LONG||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 4:
 					while(testMenu) {
 						mayorMenorMenu = true;
@@ -332,7 +339,7 @@ public class Keyboard_test {
 					}
 					break;
 					
-				//5.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL FLOAT
+				//5.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL FLOAT||||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 5:
 					while(testMenu) {
 						mayorMenorMenu = true;
@@ -382,7 +389,7 @@ public class Keyboard_test {
 					}
 					break;
 				
-				//6.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL DOUBLE
+				//6.PRUEBA FUNCIÓN LEER NÚMERO MAYOR/MENOR/IGUAL DOUBLE|||||||||||||||||||||||||||||||||||||||||||||||||||||
 				case 6:
 					while(testMenu) {
 						mayorMenorMenu = true;
