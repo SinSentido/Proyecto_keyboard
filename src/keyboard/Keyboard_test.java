@@ -3,6 +3,14 @@ import static keyboard.Keyboard.*;
 
 public class Keyboard_test {
 	public static void main(String[] args) {
+		
+		/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+		 *Aplicación para probar todas las funciones de la clase teclado. Organizada por menús.
+		 *Se pueden probar todas las funciones de manera manual menos la de leer un booleano por 
+		 *pregunta ya que esa función se prueba de manera automática mientras se navega por los 
+		 *menus de la clase de pruebas.
+		 *|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+		
 		//Variables menús
 		boolean mainMenu = true, testMenu, rangeTestMenu, mayorMenorMenu;
 		int mainMenuOption, typeValue, limitValue, mayorMenorValue;
