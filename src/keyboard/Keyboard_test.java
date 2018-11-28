@@ -98,7 +98,7 @@ public class Keyboard_test {
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo int: ");
 						numInt = readInt();
-						System.out.printf("El número short que has elegido es: %d%n%n", numInt);
+						System.out.printf("El número int que has elegido es: %d%n%n", numInt);
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números int?");
 					}
 					break;
@@ -107,7 +107,7 @@ public class Keyboard_test {
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo long: ");
 						numLong = readLong();
-						System.out.printf("El número short que has elegido es: %d%n%n", numLong);
+						System.out.printf("El número long que has elegido es: %d%n%n", numLong);
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números long?");
 					}
 					break;
@@ -116,16 +116,16 @@ public class Keyboard_test {
 					while(testMenu) {
 						System.out.println("Escribe un número de tipo float: ");
 						numFloat = readFloat();
-						System.out.printf("El número short que has elegido es: %.2f%n%n", numFloat);
+						System.out.printf("El número float que has elegido es: %.2f%n%n", numFloat);
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números float?");
 					}
 					break;
 				//PRUEBA FUNCIÓN PARA LEER NÚMERO DOUBLE
 				case 6:
 					while(testMenu) {
-						System.out.println("Escribe un número de tipo short Double: ");
+						System.out.println("Escribe un número de tipo double: ");
 						numDouble = readDouble();
-						System.out.printf("El número short que has elegido es: %.2f%n%n", numDouble);
+						System.out.printf("El número double que has elegido es: %.2f%n%n", numDouble);
 						testMenu = readBoolean("¿Quires seguir probando la lectura de números double?");
 					}
 					break;
@@ -485,7 +485,6 @@ public class Keyboard_test {
 								numByte = readNumberInRange(minByte, maxByte, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numByte);
 								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -495,7 +494,6 @@ public class Keyboard_test {
 								numByte = readNumberInRange(minByte, maxByte, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numByte);
 								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -505,7 +503,6 @@ public class Keyboard_test {
 								numByte = readNumberInRange(minByte, maxByte, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numByte);
 								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -515,11 +512,10 @@ public class Keyboard_test {
 								numByte = readNumberInRange(minByte, maxByte, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numByte);
 								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
 							}
 							break;
 						}
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números byte?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números byte en un rango?");
 					}
 					break;
 					
@@ -542,8 +538,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numShort = readNumberInRange(minShort, maxShort, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numShort);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números short en este rango?");
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -552,8 +547,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numShort = readNumberInRange(minShort, maxShort, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numShort);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números short en este rango?");
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -562,8 +556,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numShort = readNumberInRange(minShort, maxShort, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numShort);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números short en este rango?");
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -572,13 +565,12 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numShort = readNumberInRange(minShort, maxShort, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numShort);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números short en este rango?");
 							}
 							break;
 						}
 						
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números short?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números short en un rango?");
 					}
 					break;
 					
@@ -601,8 +593,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numInt = readNumberInRange(minInt, maxInt, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numInt);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números int en este rango?");
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -611,8 +602,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numInt = readNumberInRange(minInt, maxInt, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numInt);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números int en este rango?");
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -621,8 +611,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numInt = readNumberInRange(minInt, maxInt, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numInt);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números int en este rango?");
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -631,13 +620,12 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numInt = readNumberInRange(minInt, maxInt, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numInt);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números int en este rango?");
 							}
 							break;
 						}
 						
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números int?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números int en un rango?");
 					}
 					break;
 				
@@ -660,8 +648,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numLong = readNumberInRange(minLong, maxLong, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numLong);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números long en este rango?");
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -670,8 +657,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numLong = readNumberInRange(minLong, maxLong, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numLong);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números long en este rango?");
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -680,8 +666,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numLong = readNumberInRange(minLong, maxLong, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numLong);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números long en este rango?");
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -690,13 +675,12 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numLong = readNumberInRange(minLong, maxLong, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %d%n%n", numLong);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números long en este rango?");
 							}
 							break;
 						}
 						
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números long?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números long en un rango?");
 					}
 					break;
 				
@@ -719,8 +703,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numFloat = readNumberInRange(minFloat, maxFloat, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numFloat);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números float en este rango?");
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -729,8 +712,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numFloat = readNumberInRange(minFloat, maxFloat, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numFloat);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números float en este rango?");
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -739,8 +721,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numFloat = readNumberInRange(minFloat, maxFloat, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numFloat);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números float en este rango?");
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -749,13 +730,12 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numFloat = readNumberInRange(minFloat, maxFloat, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numFloat);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números float en este rango?");
 							}
 							break;
 						}
 						
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números float?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números float en un rango?");
 					}
 					break;
 					
@@ -778,8 +758,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numDouble = readNumberInRange(minDouble, maxDouble, Limit.MAX_MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numDouble);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números double en este rango?");
 							}
 							break;
 						//Valores mínimo y máximo excluidos
@@ -788,8 +767,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numDouble = readNumberInRange(minDouble, maxDouble, Limit.MAX_MIN_EXCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numDouble);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números double en este rango?");
 							}
 							break;
 						//Valor mínimo incluido y máximo excluido
@@ -798,8 +776,7 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numDouble = readNumberInRange(minDouble, maxDouble, Limit.MIN_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numDouble);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números double en este rango?");
 							}
 							break;
 						//Valor máximo incluido y mínimo excluido
@@ -808,13 +785,12 @@ public class Keyboard_test {
 								System.out.println("Escribe un número dentro del rango: ");
 								numDouble = readNumberInRange(minDouble, maxDouble, Limit.MAX_INCLUDED);
 								System.out.printf("Has escrito el número: %.2f%n%n", numDouble);
-								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números byte en este rango?");
-								break;
+								rangeTestMenu = readBoolean("¿Quires seguir probando la lectura de números double en este rango?");
 							}
 							break;
 						}
 						
-						testMenu = readBoolean("¿Quires seguir probando la lectura de números double?");
+						testMenu = readBoolean("¿Quires seguir probando la lectura de números double en un rango?");
 					}
 					break;
 				}

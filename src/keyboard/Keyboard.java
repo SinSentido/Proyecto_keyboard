@@ -385,7 +385,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
@@ -396,7 +396,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d%n", x);
 						sentinel = true;
 			 		}
 			 		break;
@@ -407,7 +407,7 @@ public class Keyboard {
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d%n", x);
 			 			sentinel = true;
 			 		}
 					break;
@@ -418,7 +418,7 @@ public class Keyboard {
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
@@ -441,7 +441,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
@@ -452,7 +452,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d%n", x);
 						sentinel = true;
 			 		}
 			 		break;
@@ -463,7 +463,7 @@ public class Keyboard {
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d%n", x);
 			 			sentinel = true;
 			 		}
 					break;
@@ -474,7 +474,7 @@ public class Keyboard {
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
@@ -497,7 +497,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
@@ -508,7 +508,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d%n", x);
 						sentinel = true;
 			 		}
 			 		break;
@@ -519,7 +519,7 @@ public class Keyboard {
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d%n", x);
 			 			sentinel = true;
 			 		}
 					break;
@@ -530,7 +530,7 @@ public class Keyboard {
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
@@ -553,7 +553,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %.2f%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
@@ -564,7 +564,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %.2f%n", x);
 						sentinel = true;
 			 		}
 			 		break;
@@ -575,7 +575,7 @@ public class Keyboard {
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %.2f%n", x);
 			 			sentinel = true;
 			 		}
 					break;
@@ -586,7 +586,7 @@ public class Keyboard {
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un número mayor o igual . Tienes que introducir un número menor que %.2f%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
@@ -609,7 +609,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//2.2. Si el número es menor se le pide que vuelva a escribir otro número.
 			 		if(y < x) {
-			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %d", x);
+			 			System.out.printf("Has introducido un número menor. Tienes que introducir un número mayor o igual que %.2f%n", x);
 			 			sentinel = true;
 			 		}
 			 		break;
@@ -620,7 +620,7 @@ public class Keyboard {
 			 		sentinel = false;
 			 		//3.2. Si el número es mayor se le pide que vuelva a escribir otro número.
 			 		if(y > x) {
-				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %d", x);
+				 		System.out.printf("Has introducido un número mayor. Tienes que introducir un número menor o igual que %.2f%n", x);
 						sentinel = true;
 			 		}
 			 		break;
@@ -631,7 +631,7 @@ public class Keyboard {
 				 	sentinel = false;
 				 	//4.2. Si es menor o igual se le pide que vuelva a escribir otro número.
 				 	if(y <= x) {
-						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %d", x);
+						System.out.printf("Has introducido un número menor o igual. Tienes que introducir un número mayor que %.2f%n", x);
 			 			sentinel = true;
 			 		}
 					break;
@@ -642,7 +642,7 @@ public class Keyboard {
 					sentinel = false;
 			 		//5.2. Si es mayor o igual se le pide que vuelva a escribir otro número.
 			 		if(y >= x) {
-			 			System.out.printf("Has introducido un mayor o igual . Tienes que introducir un número menor que %d", x);
+			 			System.out.printf("Has introducido un número mayor o igual . Tienes que introducir un número menor que %.2f%n", x);
 			 			sentinel = true;
 				 	}
 				 	break;
