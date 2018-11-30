@@ -799,7 +799,6 @@ public class Keyboard_test {
 				while(testMenu) {
 					//Se escribe el menu
 					System.out.println("Introduce el mensaje del menu");
-					cleanBuffer();
 					mssg = readString();
 					System.out.println("Introduce la primera opción del menu");
 					option1 = readString();

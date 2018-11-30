@@ -4,6 +4,17 @@ import java.util.Scanner;
 
 public class Keyboard {
 	 static Scanner keyboard = new Scanner(System.in);
+	 
+	 //ENUM PARA LAS FUNCIONES DE LEER NÚMERO MAYOR/MENOR/IGUAL
+	 public enum MayorMenor
+	 { 
+		 MAYOR_IGUAL, MENOR_IGUAL, MAYOR, MENOR
+	 }
+	 
+	 //ENUM PARA LA FUNCIÓN DE LEER NÚMERO ENTRE UN VALOR MÍNIMO Y UN VALOR MÁXIMO
+	 public enum Limit{
+		 MAX_MIN_INCLUDED, MAX_MIN_EXCLUDED, MIN_INCLUDED, MAX_INCLUDED
+	 }
 	
 	 //FUNCIÓN PARA CERRAR TECLADO
 	 public static void closeKeyboard() {
@@ -35,6 +46,7 @@ public class Keyboard {
 		 while(sentinel) {
 			//2. Se introduce un caracter.
 		 	s = keyboard.next();
+			cleanBuffer();//Limpia Buffer
 		 	c = s.charAt(0);
 		 	sentinel = false;
 		 	//3. Si se introduce más de un caracter:
@@ -75,34 +87,16 @@ public class Keyboard {
 	  *//////////////////////////////////////////////////////////////////////////////////////*/
 	
 	 public static boolean readBoolean(String message, String option1, String option2) {
-		 boolean sentinel = true, value=false;
 		 byte choice=0;
-		 
-		 while(sentinel) {
-			 //1. Se le muestra al usuario un mensaje para elegir entre 2 opciones.
-			 System.out.printf("%s%n	1.%s%n	2.%s%n", message, option1, option2);
-			 choice = readByte();
-			 //2. Si el usuario intenta elegir una opción distinta se le pedira que vuelva a elegir.
-			 if(choice <1 || choice >2) {
-				System.out.println("Opción no válida. Introduce 1 o 2.");
-				keyboard.nextLine(); //Limpia el buffer
-				sentinel = true;
-			 }
-			 else {
-				sentinel = false;
-				 
-			 }
+
+		 //1. Se le muestra al usuario un mensaje para elegir entre 2 opciones.
+		 System.out.printf("%s%n	1.%s%n	2.%s%n", message, option1, option2);
+		 //2. Si el usuario intenta elegir una opción distinta se le pedira que vuelva a elegir.
+		 choice = readNumberInRange((byte)1,(byte)2, Limit.MAX_MIN_INCLUDED);
+
 		 //3. Cuando el usuario elija la primera o la segunda opción se guarda su elección.
-		 if(choice == 1) {
-			 value = true;
-		 }
-		 else {
-			 value = false;
-		 }
-		 }
-		 return value;
-	 }
-		 
+		 return choice == 1;
+	}
 	 
 	 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	  * FUNCIÓN PARA LEER DATOS BOOLEANOS CON PREGUNTA
@@ -113,29 +107,17 @@ public class Keyboard {
 	  */////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	 
 	 public static boolean readBoolean(String question) {
-		 boolean sentinel=true, value=false;
 		 char choice;
 		 
-		 while(sentinel) {
+		 do {
 			 //1. Se le hace una pregunta al usuario que tiene que ser respondida con si o no(S/N)
 			 System.out.printf("%s (s/n)%n", question);
-			 choice = readChar();
-			 choice = Character.toLowerCase(choice); //Pasa la variable choice a minúscula para hacer las comprobaciones
+			 choice = Character.toLowerCase(readChar()); //Pasa la variable choice a minúscula para hacer las comprobaciones
 			 //2. Si el usuario responde si o no (S/N) se guarda su respuesta y se continua.
-			 if(choice == 's') {
-				 value = true;
-				 sentinel = false;
-			 }
-			 else if(choice == 'n') {
-				 value = false;
-				 sentinel = false;
-			 }
-			 //3. Si el usuario responde algo distinto a si o no (S/N) se le pedirá que responda correctamente a la pregunta.
-			 else {
-				 System.out.println("Opción no válida. Introduce s/n para continuar: ");
-			 }
 		 }
-		 return value;
+		 while(choice != 'y' && choice != 'n');
+
+		 return choice == 'y';
 	 }
 	 
 	 /*//////////////////////////////////////////////////////////////////////////////////////////////
@@ -154,7 +136,7 @@ public class Keyboard {
 		 byte x=0;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextByte();
@@ -164,9 +146,13 @@ public class Keyboard {
 			 catch(InputMismatchException e){
 				 System.out.println("Has introducido un valor no válido. Introduce un número(byte): ");
 				 sentinel = true;
+
+			 }
+			 finally {
 				 cleanBuffer();
-			 }		 
+			 }
 		 }
+		 while(sentinel);
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -177,7 +163,7 @@ public class Keyboard {
 		 short x=0;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextShort();
@@ -187,9 +173,12 @@ public class Keyboard {
 			 catch(InputMismatchException e){
 				 System.out.println("Has introducido un valor no válido. Introduce un número(short): ");
 				 sentinel = true;
-				 cleanBuffer();
 			 }		 
+			 finally {
+				 cleanBuffer();
+			 }
 		 }
+		 while(sentinel);
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -200,7 +189,7 @@ public class Keyboard {
 		 int x=0;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextInt();
@@ -210,9 +199,13 @@ public class Keyboard {
 			 catch(InputMismatchException e){
 				 System.out.println("Has introducido un valor no válido. Introduce un número(int): ");
 				 sentinel = true;
-				 cleanBuffer();
 			 }		 
+			 finally {
+				 cleanBuffer();
+			 }
 		 }
+		 while(sentinel);
+		 
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -223,7 +216,7 @@ public class Keyboard {
 		 long x=0L;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextLong();
@@ -233,9 +226,12 @@ public class Keyboard {
 			 catch(InputMismatchException e){
 				 System.out.println("Has introducido un valor no válido. Introduce un número(long): ");
 				 sentinel = true;
-				 cleanBuffer();
 			 }		 
+			 finally {
+				 cleanBuffer();
+			 }
 		 }
+		 while(sentinel);
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -246,7 +242,7 @@ public class Keyboard {
 		 float x=0f;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextFloat();
@@ -256,9 +252,12 @@ public class Keyboard {
 			 catch(InputMismatchException e){
 				 System.out.println("Has introducido un valor no válido. Introduce un número(float): ");
 				 sentinel = true;
-				 cleanBuffer();
 			 }		 
+			 finally {
+				 cleanBuffer();
+			 }
 		 }
+		 while(sentinel);
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -269,7 +268,7 @@ public class Keyboard {
 		 double x=0.0;
 		 boolean sentinel = true;
 		 
-		 while(sentinel) {
+		 do {
 			 try {
 				 //2. El usuario escribe un número
 				 x = keyboard.nextDouble();
@@ -280,9 +279,12 @@ public class Keyboard {
 				 System.out.println("Has introducido un valor no válido. Introduce un número(double): ");
 				 keyboard.nextLine(); //Limpia el buffer
 				 sentinel = true;
-				 cleanBuffer();
 			 }		 
+			 finally {
+				 cleanBuffer();
+			 }
 		 }
+		 while(sentinel); 
 		 //4. Si escribe un número se guarda y se continua.
 		 return x;
 	 }
@@ -308,17 +310,11 @@ public class Keyboard {
 	  * Se repetira este planteamiento para todas las funciones de leer un número mayor/menor/igual
 	  *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	 
-	 //ENUM PARA LAS FUNCIONES DE LEER NÚMERO MAYOR/MENOR/IGUAL
-	 public enum MayorMenor
-	 { 
-		 MAYOR_IGUAL, MENOR_IGUAL, MAYOR, MENOR
-	 }
-	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO BYTE
 	 public static byte readMayorMenor(byte x, MayorMenor VALUE) {
 		 byte y=0;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;		
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -367,15 +363,15 @@ public class Keyboard {
 				 	break;
 			}
 		 }
-		 cleanBuffer();
+		 while(sentinel);
 		 return y;
 	 }
 	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO SHORT
 	 public static short readMayorMenor(short x, MayorMenor VALUE) {
 		 short y=0;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;		
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -424,14 +420,15 @@ public class Keyboard {
 				 	break;
 			}
 		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO INT
 	 public static int readMayorMenor(int x, MayorMenor VALUE) {
 		 int y=0;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;	
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -480,14 +477,15 @@ public class Keyboard {
 				 	break;
 			}
 		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO LONG
 	 public static long readMayorMenor(long x, MayorMenor VALUE) {
 		 long y=0L;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -536,14 +534,15 @@ public class Keyboard {
 				 	break;
 			}
 		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO FLOAT
 	 public static float readMayorMenor(float x, MayorMenor VALUE) {
 		 float y=0.0f;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -592,14 +591,15 @@ public class Keyboard {
 				 	break;
 			}
 		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
 	 //FUNCIÓN PARA LEER NÚMERO MAYOR/MENOR/IGUAL TYPO DOUBLE
 	 public static double readMayorMenor(double x, MayorMenor VALUE) {
 		 double y=0.0;
-		 boolean sentinel = true;		 
-		 while(sentinel) {
+		 boolean sentinel = true;		
+		 do {
 			 //1. Se le indica al usuario que tiene que introducir un número mayor o igual, menor o igual, mayor o menor que otro número.
 			 switch(VALUE){
 			 	//2. Si es mayor o igual:
@@ -648,6 +648,7 @@ public class Keyboard {
 				 	break;
 			}
 		 }
+		 while(sentinel);
 		 return y;
 	 }
 	  
@@ -666,12 +667,7 @@ public class Keyboard {
 	  * 
 	  * Se repite este planteamiento para todas las sobrecargas de la función.
 	  *//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-	 
-	 //ENUM PARA LA FUNCIÓN DE LEER NÚMERO ENTRE UN VALOR MÍNIMO Y UN VALOR MÁXIMO
-	 public enum Limit{
-		 MAX_MIN_INCLUDED, MAX_MIN_EXCLUDED, MIN_INCLUDED, MAX_INCLUDED
-	 }
-	 
+	 	 
 	 //FUNCIÓN LEER NÚMERO ENTRE UN VALOR MÍNIMO Y UN VALOR MÁXIMO TIPO BYTE
 	 //1. Se le pide al usuario que escriba un número dentro de un rango con un valor mínimo y un valor máximo.
 	 public static byte readNumberInRange(byte min, byte max, Limit VALUE) {
@@ -680,7 +676,7 @@ public class Keyboard {
 		 }
 		 byte y = 0;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -732,7 +728,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
@@ -744,7 +741,7 @@ public class Keyboard {
 		 }
 		 short y = 0;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -796,7 +793,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
@@ -809,7 +807,7 @@ public class Keyboard {
 		 }
 		 int y = 0;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -861,7 +859,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }	
 	 
@@ -873,7 +872,7 @@ public class Keyboard {
 		 }
 		 long y = 0L;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -925,7 +924,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
@@ -937,7 +937,7 @@ public class Keyboard {
 		 }
 		 float y = 0f;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -989,7 +989,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }
 	 
@@ -1001,7 +1002,7 @@ public class Keyboard {
 		 }
 		 double y = 0;
 		 boolean sentinel = true;
-		 while(sentinel) {
+		 do {
 			 //2. Se le indica al usuario los valores límites:
 			 switch(VALUE) {
 			 	//2.1. Valor mínimo y valor máximo incluidos en el rango
@@ -1053,7 +1054,8 @@ public class Keyboard {
 			 		}
 			 		break;
 			 }
-	 }
+		 }
+		 while(sentinel);
 		 return y;
 	 }
 }
