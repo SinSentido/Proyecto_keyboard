@@ -1,0 +1,51 @@
+-----INFORME DE AUTOEVALUACIÓN-----
+
+-Nombre alumno: Jose Antonio Simón Amador
+
+
+-------------------------------------------
+-Código:
+-------------------------------------------
+Optimización general:
+	-Poner los enum arriba. (Corregido)
+
+Fallos leer carácter:
+	-Limpiar buffer. (Corregido)
+
+Optimización leer número cualquiera:
+	-Cambiar while a do-while. (Corregido)
+
+Fallos leer número cualquiera:
+	-Limpiar buffer en finally, no en catch. (Corregido)
+
+Optimización leer número límite:
+	-Cambiar while a do-while. (Corregido)
+
+Fallo leer número límite:
+	-Sobra una limpieza de buffer en byte. (Corregido)
+
+Optimización leer número en un rango:
+	-Cambiar while a do-while. (Corregido)
+
+Optimización leer datos booleanos:
+	-Utilizar función de leer número en rango. (Corregido)
+	-Usar return int == 1 para devolver truo o false. (Corregido)
+	-Cambiar while a do-while. (Corregido)
+	-Optimización char = Character.toLowerCase(readChar()); (Corregido)
+	-Optimización return char == 'y' para devolver truo o false. (Corregido)
+
+--------------------------------------------
+-Planteamiento:
+--------------------------------------------
+
+
+--------------------------------------------
+-Tabla de caja negra:
+--------------------------------------------
+
+
+--------------------------------------------
+-Diagrama de casos de uso:
+--------------------------------------------
+
+
